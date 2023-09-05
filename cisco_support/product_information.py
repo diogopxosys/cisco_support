@@ -32,7 +32,7 @@ class PI:
 
             return r.json()
         except Exception as e:
-            print(e, r.reason)
+            print(e, r.json())
 
     def getByProductIDs(self, product_ids: list, page_index: int = 1) -> dict:
         params = {
@@ -47,7 +47,7 @@ class PI:
 
             return r.json()
         except Exception as e:
-                print(e, r.reason)
+                print(e, r.json())
 
     def getMDFInformationByProductIDs(self, product_ids: list, page_index: int = 1) -> dict:
         params = {
@@ -62,4 +62,4 @@ class PI:
         
             return r.json()
         except Exception as e:
-            print(e, r.reason)
+            print(e, r.json())
