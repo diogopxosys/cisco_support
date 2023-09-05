@@ -14,14 +14,4 @@ def getToken(client_id: str, client_secret: str, verify: bool, proxies: dict) ->
         }
 
         r = requests.post(url=url, params=params, headers=headers, verify=verify, proxies=proxies)
-        
-        if r is not None:
-           
-            try:
-               
-                return r.json()['access_token']
-            
-            except Exception:
-                print(r.json())
-        
-        return None
+        return r.json()['access_token']
