@@ -13,15 +13,15 @@ def getToken(client_id: str, client_secret: str, verify: bool, proxies: dict) ->
             'Content-Type':'application/x-www-form-urlencoded'
         }
 
-        response = requests.post(url=url, params=params, headers=headers, verify=verify, proxies=proxies)
+        r = requests.post(url=url, params=params, headers=headers, verify=verify, proxies=proxies)
         
-        if response is not None:
+        if r is not None:
            
             try:
                
-                return response.json()['access_token']
+                return r.json()['access_token']
             
             except Exception:
-                print(response.json())
+                print(r.json())
         
         return None
