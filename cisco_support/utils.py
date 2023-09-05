@@ -21,7 +21,7 @@ def getToken(client_id: str, client_secret: str, verify: bool, proxies: dict) ->
                
                 return response.json()['access_token']
             
-            except KeyError:
-                print("Error:", response.reason)
+            except Exception:
+                print(response.json())
         
         return None
