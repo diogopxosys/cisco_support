@@ -27,9 +27,12 @@ class PI:
         serial_numbers = ','.join(serial_numbers)
 
         url = f'https://api.cisco.com/product/v1/information/serial_numbers/{serial_numbers}'
-        r = requests.get(url=url, headers=self.__headers, params=params, verify=self.__verify, proxies=self.__proxies)
+        try:
+            r = requests.get(url=url, headers=self.__headers, params=params, verify=self.__verify, proxies=self.__proxies)
 
-        return r.json()
+            return r.json()
+        except Exception as e:
+            print(e)
 
     def getByProductIDs(self, product_ids: list, page_index: int = 1) -> dict:
         params = {
@@ -39,9 +42,12 @@ class PI:
         product_ids = ','.join(product_ids)
 
         url = f'https://api.cisco.com/product/v1/information/product_ids/{product_ids}'
-        r = requests.get(url=url, headers=self.__headers, params=params, verify=self.__verify, proxies=self.__proxies)
+        try: 
+            r = requests.get(url=url, headers=self.__headers, params=params, verify=self.__verify, proxies=self.__proxies)
 
-        return r.json()
+            return r.json()
+        except Exception as e:
+                print(e)
 
     def getMDFInformationByProductIDs(self, product_ids: list, page_index: int = 1) -> dict:
         params = {
@@ -50,7 +56,10 @@ class PI:
 
         product_ids = ','.join(product_ids)
 
-        url = f'https://api.cisco.com/product/v1/information/product_ids/{product_ids}'
-        r = requests.get(url=url, headers=self.__headers, params=params, verify=self.__verify, proxies=self.__proxies)
-
-        return r.json()
+        url = f'https://api.cisco.com/product/v1/information/product_ids_mdf{product_ids}'
+        try: 
+            r = requests.get(url=url, headers=self.__headers, params=params, verify=self.__verify, proxies=self.__proxies)
+        
+            return r.json()
+        except Exception as e:
+            print(e)
